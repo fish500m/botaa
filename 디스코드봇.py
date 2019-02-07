@@ -1,12 +1,7 @@
 import discord
 import asyncio
-import random
-from discord import Member
-from urllib.request import urlopen, Request
-from discord.ext import commands
-from discord.ext.commands import Bot
-import urllib
 import time
+import os
 
 
 countG = 0
@@ -245,6 +240,6 @@ async def on_message(message):
 
             await client.send_message(message.channel, '성공!')
             
-
-client.run('NTM3NDY4MjA1ODA4MjIyMjQ4.Dza-rA.uc3Dq_Cjb_R1pwwCDIE_fgkuWfQ')
+access_token = os.environ["BOT_TOKEN"]
+client.run(access_token)
        
