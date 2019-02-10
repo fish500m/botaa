@@ -71,33 +71,6 @@ async def on_message(message):
             await client.send_message(message.channel, embed=discord.Embed(title="배그각입니다.", color=discord.Color.blue()))
         else:
             await client.send_message(message.channel, embed=discord.Embed(title="자러갑시다....", color=discord.Color.red()))
-
-    if message.content.startswith('ban'):
-         try:
-             if message.author.server_permissions.administrator:
-                 learn = message.content.split(' ')
-                 member = discord.utils.get(client.get_all_members(),id=learn[1])
-                 await client.ban(member, 1)
-                 await client.send_message(channel,'성공적으로 벤이 완료되었습니다.')
-             else:
-                 await client.send_message(channel,'관리자 권한이 있어야 합니다!')
-         except:
-                 await client.send_message(channel,'그 유저가 권한이 높거나 같거나 봇 권한없습니다.')
-        
-    if message.content.startswith('kick'):
-         try:
-             if message.author.server_permissions.administrator:
-                 learn = message.content.split(' ')
-                 member = discord.utils.get(client.get_all_members(),id=learn[1])
-                 await client.kick(member)
-                 await client.send_message(channel,'성공적으로 킥이 완료되었습니다.')
-             else:
-                 await client.send_message(channel,'관리자 권한이 있어야 합니다!')
-         except:
-                 await client.send_message(channel,'그 유저가 권한이 높거나 같거나 봇 권한없습니다.')
-
-
-
     if message.content.startswith('ping'):
          before = time.monotonic()
          msg = await client.send_message(message.channel, '핑측정중...')
