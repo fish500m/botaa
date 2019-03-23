@@ -1,3 +1,5 @@
 discord.py==0.16.12
-asyncio.py==0.16.12
-time.py==0.16.12
+asyncio.py==3.4.3
+openpyxl.py==2.6.1
+bs4.py==0.0.1
+asyncio.py==3.4.3
