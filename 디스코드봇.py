@@ -3,12 +3,12 @@ import random
 import openpyxl
 import datetime
 import os
-import time
+
 
 
 
 client = discord.Client()
-times = int(time.time())
+
 
 
     
@@ -90,10 +90,7 @@ async def on_message(message):
          await client.send_message(channel,learn+'')                       # await client.send_message(message.channel,learn+'')
         else:
           await client.send_message(channel,'권한이 없습니다!') 
-        
-     if message.content.startswith('업타임'):
-          a = int(time.time())
-          await client.send_message(channel,str(a-times)+'초')         
+       
 
 
 access_token = os.environ["BOT_TOKEN"] 
