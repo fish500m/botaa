@@ -28,14 +28,18 @@ async def on_message(message):
           return None
         
      if message.content.startswith('따라해'):
-        if id in owner:
+         try:
+             if message.author.server_permissions.administrator:
          learn = message.content.replace('따라해', "")
          await client.delete_message(message) 
          await client.send_message(message.channel,learn+'')     
         else:
           await client.send_message(channel,'')         
         
-        
+     if message.content.startswith('say'):
+        learn = message.content.replace('say', "")
+        await client.delete_message(message) 
+        await client.send_message(message.channel,learn+'')         
         
         
 
