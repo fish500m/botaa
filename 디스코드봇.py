@@ -14,7 +14,7 @@ async def on_ready():
     print(client.user.name)
     print(client.user.id)
     print("------------------")
-    await client.change_presence(game=discord.Game(name='"도움말"입력"하세요!', type=1))  
+    await client.change_presence(game=discord.Game(name='별로 없어요', type=1))  
 
 
 @client.event
@@ -23,7 +23,7 @@ async def on_message(message):
 
      id = message.author.id
      channel = message.channel
-     owner = ['545692889292734474','480568196286644224']
+     owner = ['545692889292734474','480568196286644224','375951816384446464','536133196706873352']
      if message.author.bot:
           return None
         
