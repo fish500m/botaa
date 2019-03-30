@@ -56,8 +56,8 @@ async def on_message(message):
         
      if message.content.startswith('따라해'):
         if id in owner:
+         await client.delete_message(message)            
          learn = message.content.replace('따라해', "")
-         await client.delete_message(message) 
          await client.send_message(message.channel,learn+'')     
         else:
           await client.send_message(channel,'')         
