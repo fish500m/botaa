@@ -28,8 +28,7 @@ async def on_message(message):
           return None
         
      if message.content.startswith('따라해'):
-         try:
-             if message.author.server_permissions.administrator:
+        if id in owner:
          learn = message.content.replace('따라해', "")
          await client.delete_message(message) 
          await client.send_message(message.channel,learn+'')     
@@ -39,7 +38,24 @@ async def on_message(message):
      if message.content.startswith('say'):
         learn = message.content.replace('say', "")
         await client.delete_message(message) 
-        await client.send_message(message.channel,learn+'')         
+        await client.send_message(message.channel,learn+'') 
+        
+     if message.content.startswith("프로필"):
+
+        text = ""
+
+        learn = message.content.split(" ")
+
+        vrsize = len(learn)
+
+        vrsize = int(vrsize)
+
+        for i in range(1, vrsize):
+            text = text + " " + learn[i]
+        for user in message.mentions:
+            embed = discord.Embed(color=0xffffff)
+            embed.set_image(url=user.avatar_url)
+            await client.send_message(message.channel, embed=embed)        
         
         
 
