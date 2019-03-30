@@ -86,7 +86,7 @@ async def on_message(message):
      if message.content.startswith('공지'):
         if id in owner:
          learn = message.content.replace('공지', "")        
-         channel = discord.Object(id='527778051728343041')
+         channel = discord.Object(id='561487738025803787')
          await client.send_message(channel,learn+'')                       # await client.send_message(message.channel,learn+'')
         else:
           await client.send_message(channel,'권한이 없습니다!') 
