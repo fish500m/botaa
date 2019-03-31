@@ -1,11 +1,12 @@
-
+import os
 
 class set:
     def __init__(self):
         #공지할 사람의 디스코드 ID 입력
         self.owner = "480568196286644224"       
         #봇의 토큰 입력
-        self.token = "NTYxNTQxMjE4MTQ5MDcyODk2.XJ9wBg.IJZCKYLQPH1rWQa_fYDPcpl7D4U"
+access_token = os.environ["BOT_TOKEN"] 
+client.run (access_token)
         #봇의 접두사 입력
         self.first = "p!"
         #봇의 공지 명령어 입력
