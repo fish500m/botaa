@@ -106,17 +106,11 @@ async def on_message(message):
             await app.send_message(message.channel, embed=embed)        
         
 
-     if message.content.startswith("봇게임"):
-        if id in owner:
-            q = message.content.replace("봇게임", "")
-            f = open("rpc.setting", 'r')
-            old = f.read()
-            f.close()
-            open("rpc.setting", 'w').write(q)
-            await app.change_presence(game=discord.Game(name=q, type=0))
-            await app.send_message(message.channel, '<@%s>, 플레이중인 게임을 `%s`에서 `%s`으로 변경하였습니다!' % (message.author.id, old, q))
-        else:
-            await app.send_message(message.channel, '<@%s>, 당신은 봇 관리자가 아닙니다!' % (message.author.id))
+     if message.content.startswith('!플래이중'):
+        if id in owner:	
+            learn = message.content.replace('!플래이중', "")
+            await client.change_presence(game=discord.Game(name=learn))
+            await client.send_message(message.channel, "봇의 플래이중을 바꿨습니다.")
 
      if message.content.startswith('공지'):
         if id in owner:
