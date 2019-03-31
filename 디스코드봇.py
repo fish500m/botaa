@@ -45,9 +45,9 @@ async def on_message(message):
      if message.content.startswith('서버'):
 
          list = []
-         for server in client.servers:
+         for server in app.servers:
              list.append(server.name)
-         await client.send_message(message.channel, "\n".join(list))
+         await app.send_message(message.channel, "\n".join(list))
 
      if message.content.startswith('시간'):
         channel = message.channel
@@ -56,7 +56,7 @@ async def on_message(message):
         #embed.set_footer(text = '끗')
         dtime = datetime.datetime.now()         
         embed.set_footer(text=str(dtime.year)+"년 "+str(dtime.month)+"월 "+str(dtime.day)+"일 "+str(dtime.hour)+"시 "+str(dtime.minute)+"분 "+str(dtime.second)+"초")
-        await client.send_message(channel,embed=embed)
+        await app.send_message(channel,embed=embed)
 
 
 
