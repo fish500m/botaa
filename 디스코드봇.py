@@ -42,7 +42,21 @@ async def on_message(message):
             message.content
 	    	))
 
+     if message.content.startswith("접속"):
 
+         list = []
+         for server in client.servers:
+             list.append(server.name)
+         await client.send_message(message.channel, "\n".join(list))
+
+     if message.content.startswith("시간"):
+        channel = message.channel
+        embed = discord.Embed(colour = discord.Colour.blue())
+
+        #embed.set_footer(text = '끗')
+        dtime = datetime.datetime.now()         
+        embed.set_footer(text=str(dtime.year)+"년 "+str(dtime.month)+"월 "+str(dtime.day)+"일 "+str(dtime.hour)+"시 "+str(dtime.minute)+"분 "+str(dtime.second)+"초")
+        await client.send_message(channel,embed=embed)
 
 
 
