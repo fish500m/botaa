@@ -42,14 +42,14 @@ async def on_message(message):
             message.content
 	    	))
 
-     if message.content.startswith("접속"):
+     if message.content.startswith('서버'):
 
          list = []
          for server in client.servers:
              list.append(server.name)
          await client.send_message(message.channel, "\n".join(list))
 
-     if message.content.startswith("시간"):
+     if message.content.startswith('시간'):
         channel = message.channel
         embed = discord.Embed(colour = discord.Colour.blue())
 
