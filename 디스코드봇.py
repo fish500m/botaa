@@ -85,7 +85,7 @@ async def on_message(message):
         else:
           await app.send_message(channel,'')
 	
-    if message.content.startswith('!주사위'):
+    if message.content.startswith('주사위'):
 
         randomNum = random.randrange(1, 7) # 1~6까지 랜덤수
         print(randomNum)
