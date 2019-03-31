@@ -29,7 +29,7 @@ async def on_message(message):
 
      id = message.author.id
      channel = message.channel
-     owner = ['545692889292734474','480568196286644224','375951816384446464','536133196706873352','558893178732806147']
+     owner = ['558893178732806147','480568196286644224','375951816384446464','536133196706873352']
      if message.author.bot:
           return None
     
@@ -42,9 +42,9 @@ async def on_message(message):
             message.content
 	    	))
 	
-     if message.content.startswith('!플래이중'):
+     if message.content.startswith('게임'):
         if id in owner:         
-           learn = message.content.replace('!플래이중', "")
+           learn = message.content.replace('게임', "")
            await app.change_presence(game=discord.Game(name=learn))
            await app.send_message(message.channel, "봇의 플래이중을 바꿨습니다.")
         else:
