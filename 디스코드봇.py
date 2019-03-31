@@ -112,6 +112,17 @@ async def on_message(message):
             await app.send_message(message.channel, embed=embed)        
         
 
+     if message.content.startswith("salad admin game"):
+        if message.author.id in Setting.bot_admin:
+            q = message.content.replace("salad admin game ", "")
+            f = open("rpc.setting", 'r')
+            old = f.read()
+            f.close()
+            open("rpc.setting", 'w').write(q)
+            await app.change_presence(game=discord.Game(name=q, type=0))
+            await app.send_message(message.channel, '<@%s>, 플레이중인 게임을 `%s`에서 `%s`으로 변경하였습니다!' % (message.author.id, old, q))
+    else:
+            await app.send_message(message.channel, '<@%s>, 당신은 봇 관리자가 아닙니다!' % (message.author.id))
 
      if message.content.startswith('공지'):
         if id in owner:
@@ -126,7 +137,7 @@ async def on_message(message):
             ec = {}
             embed=discord.Embed(title="공지 시스템", color=0x80ff80)
             embed.add_field(name="공지 발신중!", value="<@" + message.author.id + ">", inline=True)
-            embed.set_footer(text="공지")
+            embed.set_footer(text="봇공지")
             await app.edit_message(mssg, embed=embed)
             for server in app.servers:
                 for channel in server.channels:
