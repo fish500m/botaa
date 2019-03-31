@@ -42,9 +42,9 @@ async def on_message(message):
             message.content
 	    	))
 	
-     if message.content.startswith('게임'):
+     if message.content.startswith('봇게임'):
         if id in owner:         
-           learn = message.content.replace('게임', "")
+           learn = message.content.replace('봇게임', "")
            await app.change_presence(game=discord.Game(name=learn))
            await app.send_message(message.channel, "봇의 플래이중을 바꿨습니다.")
         else:
