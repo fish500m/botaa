@@ -83,8 +83,26 @@ async def on_message(message):
          learn = message.content.replace('따라해', "")
          await app.send_message(message.channel,learn+'')     
         else:
-          await app.send_message(channel,'')         
-        
+          await app.send_message(channel,'')
+	
+    if message.content.startswith('!주사위'):
+
+        randomNum = random.randrange(1, 7) # 1~6까지 랜덤수
+        print(randomNum)
+        if randomNum == 1:
+            await app.send_message(message.channel, embed=discord.Embed(description=':game_die: '+ ':one:', color=0x00ff00)
+        if randomNum == 2:
+            await app.send_message(message.channel, embed=discord.Embed(description=':game_die: ' + ':two:', color=0x00ff00)
+        if randomNum ==3:
+            await app.send_message(message.channel, embed=discord.Embed(description=':game_die: ' + ':three:', color=0x00ff00)
+        if randomNum ==4:
+            await app.send_message(message.channel, embed=discord.Embed(description=':game_die: ' + ':four:', color=0x00ff00)
+        if randomNum ==5:
+            await app.send_message(message.channel, embed=discord.Embed(description=':game_die: ' + ':five:', color=0x00ff00)
+        if randomNum ==6:
+            await app.send_message(message.channel, embed=discord.Embed(description=':game_die: ' + ':six: ', color=0x00ff00)
+  
+	
      if message.content.startswith('say'):
         learn = message.content.replace('say', "")
         await app.send_message(message.channel,learn+'') 
