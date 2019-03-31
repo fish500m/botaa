@@ -43,13 +43,7 @@ async def on_message(message):
 	    	))
 
 
-     if message.content.startswith('애플공지'):
-        if id in owner:
-         learn = message.content.replace('애플공지', "")        
-         channel = discord.Object(id='561728403993002005')
-         await app.send_message(channel,learn+'')                       # await client.send_message(message.channel,learn+'')
-        else:
-          await app.send_message(channel,'권한이 없습니다!')
+
 
 
      if message.content.startswith('업타임'):
@@ -113,7 +107,7 @@ async def on_message(message):
         
 
      if message.content.startswith("봇게임"):
-        if message.author.id in Setting.bot_admin:
+        if id in owner:
             q = message.content.replace("봇게임", "")
             f = open("rpc.setting", 'r')
             old = f.read()
