@@ -3,6 +3,8 @@ import setting
 import datetime
 import time
 import os
+import random
+
 set = setting.set()
 
 client = discord.Client()
