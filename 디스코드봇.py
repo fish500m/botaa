@@ -115,7 +115,7 @@ async def on_message(message):
             open("rpc.setting", 'w').write(q)
             await app.change_presence(game=discord.Game(name=q, type=0))
             await app.send_message(message.channel, '<@%s>, 플레이중인 게임을 `%s`에서 `%s`으로 변경하였습니다!' % (message.author.id, old, q))
-    else:
+        else:
             await app.send_message(message.channel, '<@%s>, 당신은 봇 관리자가 아닙니다!' % (message.author.id))
 
      if message.content.startswith('공지'):
