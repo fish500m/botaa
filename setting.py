@@ -5,8 +5,8 @@ class set:
         #공지할 사람의 디스코드 ID 입력
         self.owner = "480568196286644224"       
         #봇의 토큰 입력
-access_token = os.environ["BOT_TOKEN"] 
-client.run (access_token)
+        access_token = os.environ["BOT_TOKEN"] 
+        self.tokena = "ccess_token"
         #봇의 접두사 입력
         self.first = "p!"
         #봇의 공지 명령어 입력
