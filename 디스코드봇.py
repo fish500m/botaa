@@ -33,8 +33,8 @@ async def on_message(message):
     
      if message.author.id == app.user.id: return
 
-     if set.log:
-        print("Channel: %s(%s) | Author: %s(#%s) | Message: %s" % (
+
+     print("Channel: %s(%s) | Author: %s(#%s) | Message: %s" % (
             message.channel, str(message.channel.id)[:5],
             message.author.name, str(message.author.id),
             message.content
@@ -192,10 +192,7 @@ async def on_message(message):
             await app.edit_message(mssg, embed=embed)
         else:
             await app.send_message(message.channel, "봇 제작자만 사용할수 있는 커맨드입니다!")
-
-       
-
+            
 
 access_token = os.environ["BOT_TOKEN"] 
-client.run (access_token)
-       
+app.run (access_token)
