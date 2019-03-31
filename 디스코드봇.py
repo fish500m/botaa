@@ -112,9 +112,9 @@ async def on_message(message):
             await app.send_message(message.channel, embed=embed)        
         
 
-     if message.content.startswith("salad admin game"):
+     if message.content.startswith("봇게임"):
         if message.author.id in Setting.bot_admin:
-            q = message.content.replace("salad admin game ", "")
+            q = message.content.replace("봇게임", "")
             f = open("rpc.setting", 'r')
             old = f.read()
             f.close()
