@@ -106,11 +106,6 @@ async def on_message(message):
             await app.send_message(message.channel, embed=embed)        
         
 
-     if message.content.startswith('!플래이중'):
-        if id in owner:	
-            learn = message.content.replace('!플래이중', "")
-            await client.change_presence(game=discord.Game(name=learn))
-            await client.send_message(message.channel, "봇의 플래이중을 바꿨습니다.")
 
      if message.content.startswith('공지'):
         if id in owner:
