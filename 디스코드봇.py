@@ -41,7 +41,15 @@ async def on_message(message):
             message.author.name, str(message.author.id),
             message.content
 	    	))
-
+	
+     if message.content.startswith('!플래이중'):
+        if id in owner:         
+           learn = message.content.replace('!플래이중', "")
+           await app.change_presence(game=discord.Game(name=learn))
+           await app.send_message(message.channel, "봇의 플래이중을 바꿨습니다.")
+        else:
+           await app.send_message(channel,'')
+	
      if message.content.startswith('서버'):
 
          list = []
