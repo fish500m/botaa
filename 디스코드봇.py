@@ -1,4 +1,4 @@
-mport discord 
+import discord 
 import setting
 import datetime
 import time
