@@ -125,4 +125,5 @@ async def on_message(message):
 
             
 
-app.run('NTYxNTQxMjE4MTQ5MDcyODk2.XJ9wBg.IJZCKYLQPH1rWQa_fYDPcpl7D4U')
+access_token = os.environ["BOT_TOKEN"] 
+client.run (access_token)
