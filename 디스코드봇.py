@@ -80,7 +80,19 @@ async def on_message(message):
      if message.content.startswith('업타임'):
           a = int(time.time())
           await app.send_message(channel,str(a-times)+'초')
-          
+
+	
+     if message.content.startswith('서버정보'):
+           embed = discord.Embed(title="\"%s\" 서버정보!" % (message.server.name), description=None, color=Setting.embed_color)
+           embed.add_field(name="서버 소유자", value="<@%s>" % message.server.owner.id, inline=False)
+           embed.add_field(name="서버 생성일", value="%s (UTC)" % (message.server.created_at), inline=False)
+           embed.add_field(name="서버 보안등급", value=message.server.verification_level, inline=False)
+           embed.add_field(name="서버 위치", value=message.server.region, inline=False)
+           embed.add_field(name="서버 잠수채널", value="%s (%s분 이상 잠수이면 이동됨)" % (message.server.afk_channel, message.server.afk_timeout/60), inline=False)
+           embed.set_thumbnail(url=message.server.icon_url)
+           embed.set_footer(text = "Server ID : %s | Ver. %s | %s" % (message.server.id, Setting.version, Copyright))
+           await app.send_message(message.channel, embed=embed)
+	
      if message.content.startswith("도움말"):
         channel = message.channel
         embed = discord.Embed(
