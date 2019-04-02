@@ -254,7 +254,7 @@ async def on_message(message):
 
      if message.content.startswith('전체공지'):
         if id in owner:
-            notice = message.content.replace('공지', "")
+            notice = message.content.replace('전체공지', "")
             embed=discord.Embed(title="공지 시스템", color=0x80ff80)
             embed.add_field(name="공지 발신 준비중!", value="<@" + message.author.id + ">", inline=True)
             embed.set_author(name="admin", icon_url="https://cdn.discordapp.com/avatars/480568196286644224/028222f9980e8d76db87dde612ea430d.png?size=1024")	
