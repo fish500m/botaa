@@ -82,7 +82,7 @@ async def on_message(message):
           await app.send_message(channel,str(a-times)+'초')
 
 	
-     if message.content.startswith('서버정보'):
+     if message.content.startswith('server정보'):
            embed = discord.Embed(title="\"%s\" 서버정보!" % (message.server.name), description=None, color=Setting.embed_color)
            embed.add_field(name="서버 소유자", value="<@%s>" % message.server.owner.id, inline=False)
            embed.add_field(name="서버 생성일", value="%s (UTC)" % (message.server.created_at), inline=False)
