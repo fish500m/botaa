@@ -2,6 +2,7 @@ import discord
 import setting
 import datetime
 import time
+import asyncio
 import os
 import random
 set = setting.set()
