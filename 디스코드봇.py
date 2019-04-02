@@ -178,9 +178,9 @@ async def on_message(message):
              delembed = discord.Embed(title=":speech_left: 메세지 삭제됨. (이 메세지는 3초 후 삭제됩니다)",color=0x4286f4)
              delmsg = await app.send_message(channel,embed = delembed)
              await asyncio.sleep(3)
-             await client.delete_message(delmsg)	
+             await app.delete_message(delmsg)	
         else:
-            await app.send_message(message.channel, "당신은 권환이 없습니다.")    	
+            await app.send_message(message.channel, "당신은 권한이 없습니다!")    	
 	
      if message.content.startswith('초미세먼지'):
             learn = message.content.split(' ')
@@ -338,7 +338,7 @@ async def on_message(message):
             embed.set_footer(text="봇 공지")
             await app.edit_message(mssg, embed=embed)
         else:
-            await app.send_message(message.channel, "당신은 권환이 ")            
+            await app.send_message(message.channel, "당신은 권한이 없습니다!")            
 
             
       
