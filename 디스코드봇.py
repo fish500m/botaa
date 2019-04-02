@@ -103,9 +103,6 @@ async def on_message(message):
 
 	
 
-
-
-        await app.send_message(channel,embed=embed)  
         
      if message.content.startswith('_따라해'):
         if id in owner:
