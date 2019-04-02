@@ -31,7 +31,7 @@ async def on_ready():
     print(app.user.name)
     print(app.user.id)
     print("------------------")
-    await app.change_presence(game=discord.Game(name='별로 없어요', type=1))
+    await app.change_presence(game=discord.Game(name='_도움말', type=0))
     
 @app.event
 async def on_message(message):
@@ -50,8 +50,28 @@ async def on_message(message):
             message.author.name, str(message.author.id),
             message.content
 	    	))
+
+     if message.content.startswith('_도움말'):
+          await app.send_message(channel,'DM으로 보냈습니다!')
+          member = discord.utils.get(app.get_all_members(),id=message.author.id)
+          embed = discord.Embed(
+            title = 'KT봇 기능들입니다.',
+            description = '명령어가 너무 적어서 따로 적었어용!',
+            colour = discord.Colour.blue()
+          )
+          embed.add_field(name='도움말', value = '이메시지 생성!',inline = False)
+          embed.add_field(name='서버', value = '접속된 서버 확인!',inline = False)
+          embed.add_field(name='업타임', value = '봇이 켜진시간 확인!',inline = False)
+          embed.add_field(name='날씨 지역', value = '날씨확인',inline = False)
+          embed.add_field(name='미세먼지', value = '미세먼지확인',inline = False)
+          embed.add_field(name='초미세먼지', value = '초미세먼지확인',inline = False)
+          embed.add_field(name='정보', value = '자신의 정보확인',inline = False)
+          embed.add_field(name='say', value = '봇이 말을 따라함!',inline = False)
+          embed.add_field(name='시간', value = '시간을 확인한다!',inline = False)
+          embed.add_field(name='프로필 @멘션', value='프로필을 보여줌', inline=False)
+          await app.send_message(member,embed=embed)
 	
-     if message.content.startswith('봇게임'):
+     if message.content.startswith('_봇게임'):
         if id in owner:         
            learn = message.content.replace('봇게임', "")
            await app.change_presence(game=discord.Game(name=learn))
@@ -59,14 +79,14 @@ async def on_message(message):
         else:
            await app.send_message(channel,'')
 	
-     if message.content.startswith('서버'):
+     if message.content.startswith('_서버'):
 
          list = []
          for server in app.servers:
              list.append(server.name)
          await app.send_message(message.channel, "\n".join(list))
 
-     if message.content.startswith('시간'):
+     if message.content.startswith('_시간'):
         channel = message.channel
         embed = discord.Embed(colour = discord.Colour.blue())
 
@@ -77,54 +97,25 @@ async def on_message(message):
 
 
 
-     if message.content.startswith('업타임'):
+     if message.content.startswith('_업타임'):
           a = int(time.time())
           await app.send_message(channel,str(a-times)+'초')
 
 	
-     if message.content.startswith('server정보'):
-           embed = discord.Embed(title="\"%s\" 서버정보!" % (message.server.name), description=None, color=Setting.embed_color)
-           embed.add_field(name="서버 소유자", value="<@%s>" % message.server.owner.id, inline=False)
-           embed.add_field(name="서버 생성일", value="%s (UTC)" % (message.server.created_at), inline=False)
-           embed.add_field(name="서버 보안등급", value=message.server.verification_level, inline=False)
-           embed.add_field(name="서버 위치", value=message.server.region, inline=False)
-           embed.add_field(name="서버 잠수채널", value="%s (%s분 이상 잠수이면 이동됨)" % (message.server.afk_channel, message.server.afk_timeout/60), inline=False)
-           embed.set_thumbnail(url=message.server.icon_url)
-           embed.set_footer(text = "Server ID : %s | Ver. %s | %s" % (message.server.id, Setting.version, Copyright))
-           await app.send_message(message.channel, embed=embed)
-	
-     if message.content.startswith("도움말"):
-        channel = message.channel
-        embed = discord.Embed(
-            title = '명령어들이다 크크크큭',
-            description = '베타입니다',
-            colour = discord.Colour.blue()
-        )
 
-        #embed.set_footer(text = '끗')
-        dtime = datetime.datetime.now()
-        #print(dtime[0:4]) # 년도
-        #print(dtime[5:7]) #월
-        #print(dtime[8:11])#일
-        #print(dtime[11:13])#시
-        #print(dtime[14:16])#분
-        #print(dtime[17:19])#초
-        embed.set_footer(text=str(dtime.year)+"년 "+str(dtime.month)+"월 "+str(dtime.day)+"일 "+str(dtime.hour)+"시 "+str(dtime.minute)+"분 "+str(dtime.second)+"초")
-        #embed.set_footer(text=dtime[0:4]+"년 "+dtime[5:7]+"월 "+dtime[8:11]+"일 "+dtime[11:13]+"시 "+dtime[14:16]+"분 "+dtime[17:19]+"초")
-        embed.add_field(name='도움말', value = '이메시지 생성!',inline = False)
-        embed.add_field(name='프로필 @멘션', value='프로필을 보여줌', inline=False)
+
 
         await app.send_message(channel,embed=embed)  
         
-     if message.content.startswith('따라해'):
+     if message.content.startswith('_따라해'):
         if id in owner:
          await app.delete_message(message)            
-         learn = message.content.replace('따라해', "")
+         learn = message.content.replace('_따라해', "")
          await app.send_message(message.channel,learn+'')     
         else:
           await app.send_message(channel,'')
 
-     if message.content.startswith('날씨'):
+     if message.content.startswith('_날씨'):
         try:
             embed = discord.Embed(title='잠시만요',description='불러오고있습니다!',color=0x00ff00)
             meg = await app.send_message(channel,embed=embed)
@@ -143,7 +134,7 @@ async def on_message(message):
         except:
            await app.send_message(channel,'없는 도시입니다!')
             
-     if message.content.startswith('미세먼지'):
+     if message.content.startswith('_미세먼지'):
         try:
            embed = discord.Embed(title='잠시만요',description='불러오고있습니다!',color=0x00ff00)
            meg = await app.send_message(channel,embed=embed)
@@ -179,7 +170,7 @@ async def on_message(message):
         except:
             await app.send_message(channel,'없는 도시 거나 도/시는 미세먼지 검색이 안됩니다.')
 
-     if message.content.startswith('청소'):
+     if message.content.startswith('_청소'):
         if id in owner:    
              learn = message.content.split(' ')
              mgs = []
@@ -194,7 +185,7 @@ async def on_message(message):
         else:
             await app.send_message(message.channel, "당신은 권한이 없습니다!")    	
 	
-     if message.content.startswith('초미세먼지'):
+     if message.content.startswith('_초미세먼지'):
             learn = message.content.split(' ')
             embed = discord.Embed(title='잠시만요',description='불러오고있습니다!',color=0x00ff00)
             meg = await app.send_message(channel,embed=embed)
@@ -229,12 +220,12 @@ async def on_message(message):
 
   
 	
-     if message.content.startswith('say'):
-        learn = message.content.replace('say', "")
+     if message.content.startswith('_say'):
+        learn = message.content.replace('_say', "")
         await app.send_message(message.channel,learn+'') 
 
 	
-     if message.content.startswith('정보'):
+     if message.content.startswith('_정보'):
            date = datetime.datetime.utcfromtimestamp(((int(message.author.id) >> 22) + 1420070400000) / 1000)
            embed = discord.Embed(color=0x00ff00)
            embed.add_field(name="이름",value=message.author.name,inline=True)
@@ -244,7 +235,7 @@ async def on_message(message):
            embed.set_thumbnail(url=message.author.avatar_url)
            await app.send_message(channel,embed=embed)      
 	
-     if message.content.startswith("프로필"):
+     if message.content.startswith("_프로필"):
 
         text = ""
 
@@ -264,7 +255,7 @@ async def on_message(message):
 
 
 
-     if message.content.startswith('공지'):
+     if message.content.startswith('전체공지'):
         if id in owner:
             notice = message.content.replace('공지', "")
             embed=discord.Embed(title="공지 시스템", color=0x80ff80)
