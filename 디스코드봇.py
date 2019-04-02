@@ -1,4 +1,4 @@
-import discord 
+mport discord 
 import setting
 import datetime
 import time
@@ -216,6 +216,9 @@ async def on_message(message):
             await app.send_message(message.channel, "봇 제작자만 사용할수 있는 커맨드입니다!")            
 
             
+      
+
+            
 
 access_token = os.environ["BOT_TOKEN"] 
-client.run (access_token)
+app.run (access_token)
