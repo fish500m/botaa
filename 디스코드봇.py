@@ -20,6 +20,7 @@ set = setting.set()
 
 
 app = discord.Client()
+times = int(time.time())
 
 
 maker = "480568196286644224"
@@ -252,9 +253,9 @@ async def on_message(message):
 
 
 
-     if message.content.startswith('전체공지'):
+     if message.content.startswith('공지'):
         if id in owner:
-            notice = message.content.replace('전체공지', "")
+            notice = message.content.replace('공지', "")
             embed=discord.Embed(title="공지 시스템", color=0x80ff80)
             embed.add_field(name="공지 발신 준비중!", value="<@" + message.author.id + ">", inline=True)
             embed.set_author(name="admin", icon_url="https://cdn.discordapp.com/avatars/480568196286644224/028222f9980e8d76db87dde612ea430d.png?size=1024")	
@@ -271,10 +272,10 @@ async def on_message(message):
             await app.edit_message(mssg, embed=embed)
             for server in app.servers:
                 for channel in server.channels:
-                    for tag in set.allowprefix:
+                    for tag in ["공지"]:
                         if tag in channel.name:
                             dtat = True
-                            for distag in set.disallowprefix:
+                            for distag in ["응아니야"]:
                                 if distag in channel.name:
                                     dtat = False
                             if dtat:
@@ -307,8 +308,6 @@ async def on_message(message):
                             asdf = asdf + str(server.name) + "[채널 생성 실패]\n"
                         else:
                             asdf = asdf + str(server.name) + "[채널 생성 및 재발송 성공]\n"
-                    else:
-                        asdf = asdf + str(server.name) + "\n"
             asdf = asdf + "```"
             embed=discord.Embed(title="공지 시스템", color=0x80ff80)
             embed.add_field(name="공지 발신완료!", value="<@" + message.author.id + ">", inline=True)
@@ -338,7 +337,7 @@ async def on_message(message):
             embed.set_footer(text="봇 공지")
             await app.edit_message(mssg, embed=embed)
         else:
-            await app.send_message(message.channel, "당신은 권한이 없습니다!")            
+            await app.send_message(message.channel, "")            
 
             
       
