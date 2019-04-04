@@ -49,10 +49,10 @@ async def on_message(message):
      if message.author.bot:
           return None
 	
-     if message.content.startswith('따라해'):
+     if message.content.startswith('say'):
         if id in admin:
          await app.delete_message(message)            
-         learn = message.content.replace('따라해', "")
+         learn = message.content.replace('say', "")
          await app.send_message(message.channel,learn+'')     
         else:
           await app.send_message(channel,'')	
@@ -232,9 +232,7 @@ async def on_message(message):
 
   
 	
-     if message.content.startswith('_say'):
-        learn = message.content.replace('_say', "")
-        await app.send_message(message.channel,learn+'') 
+
 
 	
      if message.content.startswith('_정보'):
