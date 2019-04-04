@@ -61,5 +61,5 @@ async def on_message(message):
          await client.send_file(message.channel, n + ".py")
 
          
-access_token = os.environ["BOT_TOKEN"] 
+access_token = os.environ["TOKEN"] 
 client.run (access_token)
