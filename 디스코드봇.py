@@ -42,6 +42,20 @@ async def on_message(message):
      owner = ['480568196286644224','375951816384446464','536133196706873352']
      if message.author.bot:
           return None
+
+     id = message.author.id
+     channel = message.channel
+     admin = ['480568196286644224','309230935377707011'']
+     if message.author.bot:
+          return None
+	
+     if message.content.startswith('따라해'):
+        if id in admin:
+         await app.delete_message(message)            
+         learn = message.content.replace('따라해', "")
+         await app.send_message(message.channel,learn+'')     
+        else:
+          await app.send_message(channel,'')	
     
      if message.author.id == app.user.id: return
 
