@@ -39,7 +39,7 @@ async def on_message(message):
 
      id = message.author.id
      channel = message.channel
-     owner = ['480568196286644224','375951816384446464','536133196706873352']
+     owner = ['480568196286644224','375951816384446464','536133196706873352','562640781379239937']
      if message.author.bot:
           return None
 
