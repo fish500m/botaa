@@ -123,11 +123,11 @@ async def on_message(message):
         
      if message.content.startswith('_따라해'):
         if id in owner:
-         await app.delete_message(message)            
-         learn = message.content.replace('_따라해', "")
-         await app.send_message(message.channel,learn+'')     
+           await app.delete_message(message)            
+           learn = message.content.replace('_따라해', "")
+           await app.send_message(message.channel,learn+'')     
         else:
-          await app.send_message(channel,'')
+           await app.send_message(channel,'')
 
      if message.content.startswith('_날씨'):
         try:
