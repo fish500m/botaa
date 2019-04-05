@@ -43,19 +43,12 @@ async def on_message(message):
      if message.author.bot:
           return None
 
-     id = message.author.id
-     channel = message.channel
-     admin = ['480568196286644224','309230935377707011']
-     if message.author.bot:
-          return None
+
 	
-     if message.content.startswith('say'):
-        if id in admin:
-         await app.delete_message(message)            
+     if message.content.startswith('say'):         
          learn = message.content.replace('say', "")
          await app.send_message(message.channel,learn+'')     
-        else:
-          await app.send_message(channel,'')	
+
     
      if message.author.id == app.user.id: return
 
@@ -66,6 +59,15 @@ async def on_message(message):
             message.content
 	    	))
 
+
+     if message.content.startswith('_ping'):
+         before = time.monotonic()
+         msg = await app.send_message(message.channel, '핑측정중...')
+         ping = (time.monotonic() - before) * 1000
+         text = ":ping_pong:!  {0}ms".format((round(ping,1)))
+         embed = discord.Embed(title='핑',description=text,color=0x00ff00)
+         await app.edit_message(msg,embed=embed)
+		
      if message.content.startswith('_도움말'):
           await app.send_message(channel,'DM으로 보냈습니다!')
           member = discord.utils.get(app.get_all_members(),id=message.author.id)
