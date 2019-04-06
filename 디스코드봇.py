@@ -64,11 +64,16 @@ async def on_message(message):
      if message.author.id == app.user.id: return
 
 
-     print("Channel: %s(%s) | Author: %s(#%s) | Message: %s" % (
-            message.channel, str(message.channel.id)[:5],
-            message.author.name, str(message.author.id),
-            message.content
-	    	))
+     if message.content.startswith('!커맨드'):
+        await client.send_message(channel, '커맨드') 
+     else: 
+               embed = discord.Embed(
+                   title = '통합로그',
+                   description = "채널이름: %s(%s) | 유저네임: %s(#%s) | 메시지: %s" % (message.channel, str(message.channel.id)[:5],message.author.name, str(message.author.id),message.content),
+                   colour = discord.Colour.blue()
+               )
+               channel1 = discord.Object(id='563886078587568150')
+               await client.send_message(channel1,embed=embed)
 
 
      if message.content.startswith('_ping'):
@@ -101,7 +106,7 @@ async def on_message(message):
 	
      if message.content.startswith('_봇게임'):
         if id in owner:         
-           learn = message.content.replace('봇게임', "")
+           learn = message.content.replace('_봇게임', "")
            await app.change_presence(game=discord.Game(name=learn))
            await app.send_message(message.channel, "봇의 플래이중을 바꿨습니다.")
         else:
