@@ -76,7 +76,30 @@ async def on_message(message):
                embed.set_footer(text=str(dtime.year)+"년 "+str(dtime.month)+"월 "+str(dtime.day)+"일 "+str(dtime.hour)+"시 "+str(dtime.minute)+"분 "+str(dtime.second)+"초")		
                channel1 = discord.Object(id='563886078587568150')
                await app.send_message(channel1,embed=embed)
-
+     if message.content.startswith('_ban'):
+         try:
+             if id in owner:  
+                 learn = message.content.split(' ')
+                 member = discord.utils.get(client.get_all_members(),id=learn[1])
+                 await app.ban(member, 1)
+                 await app.send_message(channel,'성공적으로 벤이 완료되었습니다.')
+             else:
+                 await app.send_message(channel,'관리자 권한이 있어야 합니다!')
+         except:
+             await app.send_message(channel,'그 유저가 권한이 높거나 같거나 봇 권한없습니다.')
+        
+     if message.content.startswith('_kick'):
+         try:
+             if id in owner:  
+                 learn = message.content.split(' ')
+                 member = discord.utils.get(client.get_all_members(),id=learn[1])
+                 await app.kick(member)
+                 await app.send_message(channel,'성공적으로 킥이 완료되었습니다.')
+             else:
+                 await app.send_message(channel,'관리자 권한이 있어야 합니다!')
+         except:
+             await app.send_message(channel,'그 유저가 권한이 높거나 같거나 봇 권한없습니다.')
+	
 
      if message.content.startswith('_ping'):
          before = time.monotonic()
