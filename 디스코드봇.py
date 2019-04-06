@@ -72,6 +72,7 @@ async def on_message(message):
                    description = "채널이름: %s(%s) | 유저네임: %s(#%s) | 메시지: %s" % (message.channel, str(message.channel.id)[:5],message.author.name, str(message.author.id),message.content),
                    colour = discord.Colour.blue()
                )
+               embed.set_footer(text=str(dtime.year)+"년 "+str(dtime.month)+"월 "+str(dtime.day)+"일 "+str(dtime.hour)+"시 "+str(dtime.minute)+"분 "+str(dtime.second)+"초")		
                channel1 = discord.Object(id='563886078587568150')
                await app.send_message(channel1,embed=embed)
 
