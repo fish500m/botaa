@@ -64,8 +64,8 @@ async def on_message(message):
      if message.author.id == app.user.id: return
 
 
-     if message.content.startswith('!커맨드'):
-        await client.send_message(channel, '커맨드') 
+     if message.content.startswith('ㅁㄴㅇㄹ'):
+        await app.send_message(channel, '커맨드') 
      else: 
                embed = discord.Embed(
                    title = '통합로그',
@@ -73,7 +73,7 @@ async def on_message(message):
                    colour = discord.Colour.blue()
                )
                channel1 = discord.Object(id='563886078587568150')
-               await client.send_message(channel1,embed=embed)
+               await app.send_message(channel1,embed=embed)
 
 
      if message.content.startswith('_ping'):
