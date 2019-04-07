@@ -125,11 +125,11 @@ async def on_message(message):
           embed.add_field(name='_say', value = '봇이 말을 따라함!',inline = False)
           embed.add_field(name='_시간', value = '시간을 확인한다!',inline = False)
           embed.add_field(name='_프로필 @멘션', value='프로필을 보여줌', inline=False)
-      try:
-          await message.author.send(embed=embed)
-    except:
-          embed=discord.Embed(title="⚠ 주의", description="DM 보내기에 실패하였습니다. 계정에서 DM 설정을 확인해주세요.",color=0xd8ef56)
-          await message.channel.send(embed=embed)
+          try:
+           await message.author.send(embed=embed)
+          except:
+           embed=discord.Embed(title="⚠ 주의", description="DM 보내기에 실패하였습니다. 계정에서 DM 설정을 확인해주세요.",color=0xd8ef56)
+           await message.channel.send(embed=embed)
 	
      if message.content.startswith('_봇게임'):
         if id in owner:         
