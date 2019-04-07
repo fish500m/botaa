@@ -65,15 +65,13 @@ async def on_message(message):
 
 
      if message.content.startswith('ㅁㄴㅇㄹ'):
-        await app.send_message(channel, '커맨드') 
+        await app.send_message(channel, 'ㅁㄴㅇㄹ') 
      else: 
                embed = discord.Embed(
                    title = '통합로그',
                    description = "채널이름: %s(%s) | 유저네임: %s(#%s) | 메시지: %s" % (message.channel, str(message.channel.id)[:5],message.author.name, str(message.author.id),message.content),
                    colour = discord.Colour.blue()
-               )
-               dtime = datetime.datetime.now()		
-               embed.set_footer(text=str(dtime.year)+"년 "+str(dtime.month)+"월 "+str(dtime.day)+"일 "+str(dtime.hour)+"시 "+str(dtime.minute)+"분 "+str(dtime.second)+"초")		
+               )	
                channel1 = discord.Object(id='563886078587568150')
                await app.send_message(channel1,embed=embed)
      if message.content.startswith('_ban'):
@@ -127,7 +125,11 @@ async def on_message(message):
           embed.add_field(name='_say', value = '봇이 말을 따라함!',inline = False)
           embed.add_field(name='_시간', value = '시간을 확인한다!',inline = False)
           embed.add_field(name='_프로필 @멘션', value='프로필을 보여줌', inline=False)
-          await app.send_message(member,embed=embed)
+      try:
+          await message.author.send(embed=embed)
+    except:
+          embed=discord.Embed(title="⚠ 주의", description="DM 보내기에 실패하였습니다. 계정에서 DM 설정을 확인해주세요.",color=0xd8ef56)
+          await message.channel.send(embed=embed)
 	
      if message.content.startswith('_봇게임'):
         if id in owner:         
