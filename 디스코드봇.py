@@ -65,7 +65,7 @@ async def on_message(message):
 
 
      if message.content.startswith('ㅁㄴㅇㄹ'):
-        await app.send_message(channel, 'ㅁㄴㅇㄹ') 
+        await app.send_message(channel, 'asdf') 
      else: 
                embed = discord.Embed(
                    title = '통합로그',
@@ -78,7 +78,7 @@ async def on_message(message):
          try:
              if id in owner:  
                  learn = message.content.split(' ')
-                 member = discord.utils.get(client.get_all_members(),id=learn[1])
+                 member = discord.utils.get(app.get_all_members(),id=learn[1])
                  await app.ban(member, 1)
                  await app.send_message(channel,'성공적으로 벤이 완료되었습니다.')
              else:
@@ -90,7 +90,7 @@ async def on_message(message):
          try:
              if id in owner:  
                  learn = message.content.split(' ')
-                 member = discord.utils.get(client.get_all_members(),id=learn[1])
+                 member = discord.utils.get(app.get_all_members(),id=learn[1])
                  await app.kick(member)
                  await app.send_message(channel,'성공적으로 킥이 완료되었습니다.')
              else:
