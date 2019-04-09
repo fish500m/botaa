@@ -56,8 +56,8 @@ async def on_message(message):
 
 
 	
-     if message.content.startswith('say'):         
-         learn = message.content.replace('say', "")
+     if message.content.startswith('_say'):         
+         learn = message.content.replace('_say', "")
          await app.send_message(message.channel,learn+'')     
 
     
@@ -116,14 +116,12 @@ async def on_message(message):
             colour = discord.Colour.blue()
           )
           embed.add_field(name='_도움말', value = '이메시지 생성!',inline = False)
-          embed.add_field(name='_서버', value = '접속된 서버 확인!',inline = False)
           embed.add_field(name='_업타임', value = '봇이 켜진시간 확인!',inline = False)
           embed.add_field(name='_날씨 지역', value = '날씨확인',inline = False)
           embed.add_field(name='_미세먼지', value = '미세먼지확인',inline = False)
           embed.add_field(name='_초미세먼지', value = '초미세먼지확인',inline = False)
           embed.add_field(name='_정보', value = '자신의 정보확인',inline = False)
           embed.add_field(name='_say', value = '봇이 말을 따라함!',inline = False)
-          embed.add_field(name='_시간', value = '시간을 확인한다!',inline = False)
           embed.add_field(name='_프로필 @멘션', value='프로필을 보여줌', inline=False)
           await app.edit_message(mssg, embed=embed)		
 
@@ -136,12 +134,7 @@ async def on_message(message):
         else:
            await app.send_message(channel,'')
 	
-     if message.content.startswith('_서버'):
 
-         list = []
-         for server in app.servers:
-             list.append(server.name)
-         await app.send_message(message.channel, "\n".join(list))
 
      if message.content.startswith('_시간'):
         channel = message.channel
