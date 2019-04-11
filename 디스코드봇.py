@@ -123,7 +123,7 @@ async def on_message(message):
           embed.add_field(name='_정보', value = '자신의 정보확인',inline = False)
           embed.add_field(name='_say', value = '봇이 말을 따라함!',inline = False)
           embed.add_field(name='_프로필 @멘션', value='프로필을 보여줌', inline=False)
-          await app.edit_message(mssg, embed=embed)		
+          await app.send_message(member, embed=embed)		
 
 	
      if message.content.startswith('_봇게임'):
