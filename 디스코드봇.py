@@ -137,13 +137,15 @@ async def on_message(message):
 
 
      if message.content.startswith('_시간'):
-        channel = message.channel
-        embed = discord.Embed(colour = discord.Colour.blue())
-
-        #embed.set_footer(text = '끗')
-        dtime = datetime.datetime.now()         
-        embed.set_footer(text=str(dtime.year)+"년 "+str(dtime.month)+"월 "+str(dtime.day)+"일 "+str(dtime.hour)+"시 "+str(dtime.minute)+"분 "+str(dtime.second)+"초")
-        await app.send_message(channel,embed=embed)
+                    now = datetime.datetime.now()
+                    if now.hour > 12:
+                        embed = discord.Embed(title="현재 서버 시간은 %s년 %s월 %s일 오후 %s시 %s분 %s초 입니다!" % (now.year, now.month, now.day, now.hour - 12, now.minute, now.second), description=None, color=Setting.embed_color)
+                        embed.set_footer(text = "Seoul. (GMT +09:00) | Ver. %s | %s" % (Setting.version, Copyright))
+                        await app.send_message(message.channel, embed=embed)
+                    else:
+                        embed = discord.Embed(title="현재 서버 시간은 %s년 %s월 %s일 오전 %s시 %s분 %s초 입니다!" % (now.year, now.month, now.day, now.hour, now.minute, now.second), description=None, color=Setting.embed_color)
+                        embed.set_footer(text = "Seoul. (GMT +09:00) | Ver. %s | %s" % (Setting.version, Copyright))
+                        await app.send_message(message.channel, embed=embed)
 
 
 
