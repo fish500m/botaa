@@ -311,7 +311,7 @@ async def on_message(message):
             await app.edit_message(mssg, embed=embed)
             for server in app.servers:
                 for channel in server.channels:
-                    for tag in ["공지"]:
+                    for tag in ["으으"]: 
                         if tag in channel.name:
                             dtat = True
                             for distag in ["응아니야"]:
