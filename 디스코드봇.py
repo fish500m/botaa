@@ -65,12 +65,13 @@ async def on_message(message):
 
 
      if message.content.startswith('_시간'):
-          a = datetime.datetime.today().year
-          b = datetime.datetime.today().month
-          c = datetime.datetime.today().day
-          d = datetime.datetime.today().hour
-          e = datetime.datetime.today().minute
-          await app.send_message(channel, str(a) + '년' + str(b) + '월' + str(c) + '일' + str(d) + '시' + str(e) + '분 입니다.')
+	if now.hour > 12:
+              a = datetime.datetime.today().year
+              b = datetime.datetime.today().month
+              c = datetime.datetime.today().day
+              d = datetime.datetime.today().hour
+              e = datetime.datetime.today().minute
+              await app.send_message(channel, str(a) + '년' + str(b) + '월' + str(c) + '일' + str(d) + '시' + str(e) + '분 입니다.')
      if message.content.startswith('응아아오여ㅗㅕㅑㅠㄷ소ㅑ즂'):
         await app.send_message(channel, 'ㅂㅈㅅㅂㅈㅅㅎㄷ') 
      else: 
