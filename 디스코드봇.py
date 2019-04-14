@@ -62,7 +62,13 @@ async def on_message(message):
 
     
      if message.author.id == app.user.id: return
-
+	
+     if message.content.startswith("_채널"):
+        if id in owner:              
+            channel = app.get_channel(id=message.content[4:22])
+            await app.send_message(channel, message.content[23:])            
+        else:
+            await app.send_message(channel,'권한이 있어야 합니다!')	
 
      if message.content.startswith("_로그"):
         if id in owner:
@@ -79,7 +85,7 @@ async def on_message(message):
             embed = discord.Embed(title="원격 시스템", description=message.content[23:],color=0x19deff)
             await app.send_message(channel, embed=embed)
         else:
-            await app.send_message(channel,'관리자 권한이 있어야 합니다!')	
+            await app.send_message(channel,'권한이 있어야 합니다!')	
 	
      if message.content.startswith('응아아오여ㅗㅕㅑㅠㄷ소ㅑ즂'):
         await app.send_message(channel, 'ㅂㅈㅅㅂㅈㅅㅎㄷ') 
@@ -101,7 +107,21 @@ async def on_message(message):
          text = ":ping_pong:!  {0}ms".format((round(ping,1)))
          embed = discord.Embed(title='핑',description=text,color=0x00ff00)
          await app.edit_message(msg,embed=embed)
-		
+	
+     if message.content.startswith('소유자도움말'):
+          await app.send_message(channel,'DM으로 보냈습니다!')
+          member = discord.utils.get(app.get_all_members(),id=message.author.id)
+          embed = discord.Embed(
+            title = 'KT봇 기능들입니다.',
+            description = '명령어가 너무 적어서 따로 적었어용!',
+            colour = discord.Colour.blue()
+          )
+          embed.add_field(name='_봇게임', value = '이메시지 생성!',inline = False)
+          embed.add_field(name='_로그', value = '메시지를 보냄',inline = False)
+          embed.add_field(name='_채널', value = '메시지를 보냄',inline = False)
+	  embed.add_field(name='_원격', value = '메시지를 보냄',inline = False)
+          await app.send_message(member, embed=embed)
+	
      if message.content.startswith('_도움말'):
           await app.send_message(channel,'DM으로 보냈습니다!')
           member = discord.utils.get(app.get_all_members(),id=message.author.id)
