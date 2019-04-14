@@ -314,8 +314,8 @@ async def on_message(message):
             notice = message.content.replace('공지', "")
             embed=discord.Embed(title="공지 시스템", color=0x80ff80)
             embed.add_field(name="공지 발신 준비중!", value="<@" + message.author.id + ">", inline=True)
-            embed.set_author(name="admin", icon_url="https://cdn.discordapp.com/avatars/480568196286644224/028222f9980e8d76db87dde612ea430d.png?size=1024")	
-            embed.set_footer(text="공지")
+            embed.set_author(name="Log", icon_url="https://cdn.discordapp.com/avatars/480568196286644224/cb622728424ec6a039c3a5f6510359db.webp?size=1024")
+            embed.set_footer(text="로그봇")
             mssg = await app.send_message(message.channel, embed=embed)
             a = []
             b = []
@@ -323,15 +323,15 @@ async def on_message(message):
             ec = {}
             embed=discord.Embed(title="공지 시스템", color=0x80ff80)
             embed.add_field(name="공지 발신중!", value="<@" + message.author.id + ">", inline=True)
-            embed.set_author(name="admin", icon_url="https://cdn.discordapp.com/avatars/480568196286644224/028222f9980e8d76db87dde612ea430d.png?size=1024")	
-            embed.set_footer(text="봇공지")
+            embed.set_author(name="Log", icon_url="https://cdn.discordapp.com/avatars/480568196286644224/cb622728424ec6a039c3a5f6510359db.webp?size=1024")
+            embed.set_footer(text="로그봇")
             await app.edit_message(mssg, embed=embed)
             for server in app.servers:
                 for channel in server.channels:
-                    for tag in ["으으"]: 
+                    for tag in set.allowprefix:
                         if tag in channel.name:
                             dtat = True
-                            for distag in ["응아니야"]:
+                            for distag in set.disallowprefix:
                                 if distag in channel.name:
                                     dtat = False
                             if dtat:
@@ -364,6 +364,8 @@ async def on_message(message):
                             asdf = asdf + str(server.name) + "[채널 생성 실패]\n"
                         else:
                             asdf = asdf + str(server.name) + "[채널 생성 및 재발송 성공]\n"
+                    else:
+                        asdf = asdf + str(server.name) + "\n"
             asdf = asdf + "```"
             embed=discord.Embed(title="공지 시스템", color=0x80ff80)
             embed.add_field(name="공지 발신완료!", value="<@" + message.author.id + ">", inline=True)
@@ -389,11 +391,11 @@ async def on_message(message):
             embed.add_field(name="공지 발신 성공 채널:", value=sucess, inline=True)
             embed.add_field(name="공지 발신 실패 채널:", value=missing, inline=True)
             embed.add_field(name="공지 채널 없는 서버:", value=notfound, inline=True)
-            embed.set_author(name="admin", icon_url="https://cdn.discordapp.com/avatars/480568196286644224/028222f9980e8d76db87dde612ea430d.png?size=1024")		
-            embed.set_footer(text="봇 공지")
+            embed.set_author(name="Log", icon_url="https://cdn.discordapp.com/avatars/480568196286644224/cb622728424ec6a039c3a5f6510359db.webp?size=1024")
+            embed.set_footer(text="로그봇")
             await app.edit_message(mssg, embed=embed)
         else:
-            await app.send_message(message.channel, "")            
+            await app.send_message(message.channel, "`공지기능오류`")           
 
             
       
