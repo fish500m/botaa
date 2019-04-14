@@ -8,7 +8,7 @@ Github GNU General Public License version 3.0 (GPLv3)
 Copyright 헤브어 2019, All Right Reserved.
 """
 
-
+import 채널.txt
 import setting
 import discord
 import asyncio
