@@ -73,6 +73,13 @@ async def on_message(message):
         else:
             await app.send_message(channel,'관리자 권한이 있어야 합니다!')
 
+     if message.content.startswith("_원격"):
+        if id in owner:         
+            channel = app.get_channel(id=message.content[4:22])
+            embed = discord.Embed(title="원격 시스템", description=message.content[23:],color=0x19deff)
+            await app.send_message(channel, embed=embed)
+        else:
+            await app.send_message(channel,'관리자 권한이 있어야 합니다!')	
 	
      if message.content.startswith('응아아오여ㅗㅕㅑㅠㄷ소ㅑ즂'):
         await app.send_message(channel, 'ㅂㅈㅅㅂㅈㅅㅎㄷ') 
