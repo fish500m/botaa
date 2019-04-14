@@ -112,21 +112,23 @@ async def on_message(message):
           await app.send_message(channel,'DM으로 보냈습니다!')
           member = discord.utils.get(app.get_all_members(),id=message.author.id)
           embed = discord.Embed(
-            title = 'KT봇 기능들입니다.',
-            description = '명령어가 너무 적어서 따로 적었어용!',
+            title = '소유자 도움말 입니다.',
+            description = '아무나 못써요!',
             colour = discord.Colour.blue()
           )
           embed.add_field(name='_봇게임', value = '이메시지 생성!',inline = False)
-          embed.add_field(name='_로그', value = '메시지를 보냄',inline = False)
-          embed.add_field(name='_채널', value = '메시지를 보냄',inline = False)
-	  embed.add_field(name='_원격', value = '메시지를 보냄',inline = False)
-          await app.send_message(member, embed=embed)
+          embed.add_field(name='_로그', value = '다른서버에 메시지를 보냄!',inline = False)
+          embed.add_field(name='_채널', value = '다른서버에 메시지를 보냄!',inline = False)
+          embed.add_field(name='_원격', value = '다른서버에 메시지를 보냄!',inline = False)
+          embed.add_field(name='공지', value = '다른서버에 공지를 보냄!',inline = False)		
+          await app.send_message(member, embed=embed)		
+		
 	
      if message.content.startswith('_도움말'):
           await app.send_message(channel,'DM으로 보냈습니다!')
           member = discord.utils.get(app.get_all_members(),id=message.author.id)
           embed = discord.Embed(
-            title = 'KT봇 기능들입니다.',
+            title = '봇의 기능들입니다.',
             description = '명령어가 너무 적어서 따로 적었어용!',
             colour = discord.Colour.blue()
           )
