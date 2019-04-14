@@ -73,8 +73,8 @@ async def on_message(message):
          file.close()
          embed = discord.Embed(title='로그',description='\n 내용:'+learn,color=0x00ff00)
          await app.send_message(channel1,embed=embed)
-    else:
-        await app.send_message(channel,'')         
+     else:
+         await app.send_message(channel,'')         
 
      if message.content.startswith('설정'):
          if id in owner:
@@ -86,8 +86,8 @@ async def on_message(message):
          else:
              await app.send_message(channel,'')	
 
-     if message.content.startswith('ㅁㄴㅇㄹ'):
-        await app.send_message(channel, 'asdf') 
+     if message.content.startswith('응아아오여ㅗㅕㅑㅠㄷ소ㅑ즂'):
+        await app.send_message(channel, 'ㅂㅈㅅㅂㅈㅅㅎㄷ') 
      else: 
                embed = discord.Embed(
                    title = '통합로그',
