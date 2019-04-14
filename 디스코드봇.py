@@ -63,6 +63,28 @@ async def on_message(message):
     
      if message.author.id == app.user.id: return
 
+     if message.content.startswith('보내기'):
+         learn = message.content.replace('보내기', "")
+         embed = discord.Embed(title='로그 전송 안내',description='로그 내용:'+learn+'\n ',color=0x00ff00)
+         await app.send_message(channel,embed=embed)
+         a = learn[1]
+         file = open('채널.txt')
+         channel1 = discord.Object(id=file.read())
+         file.close()
+         embed = discord.Embed(title='로그',description='\n 내용:'+learn,color=0x00ff00)
+         await app.send_message(channel1,embed=embed)
+    else:
+        await app.send_message(channel,'')         
+
+     if message.content.startswith('설정'):
+         if id in owner:
+             learn = message.content.split(' ')
+             file = open('채널.txt', 'w')
+             file.write(learn[1])
+             file.close()
+             await app.send_message(channel,'채널 설정을을'+learn[1]+'으로 정했습니다.')
+         else:
+             await app.send_message(channel,'')	
 
      if message.content.startswith('ㅁㄴㅇㄹ'):
         await app.send_message(channel, 'asdf') 
