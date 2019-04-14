@@ -77,7 +77,7 @@ async def on_message(message):
             embed.set_footer(text="로그 일부분만 보내 드립니다.")
             await app.send_message(channel, embed=embed)
         else:
-            await app.send_message(channel,'관리자 권한이 있어야 합니다!')
+            await app.send_message(channel,'권한이 있어야 합니다!')
 
      if message.content.startswith("_원격"):
         if id in owner:         
