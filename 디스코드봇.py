@@ -50,7 +50,7 @@ async def on_message(message):
 
      id = message.author.id
      channel = message.channel
-     owner = ['480568196286644224','375951816384446464','536133196706873352','562640781379239937']
+     owner = ['480568196286644224','536133196706873352','562640781379239937']
      if message.author.bot:
           return None
 
@@ -64,13 +64,16 @@ async def on_message(message):
      if message.author.id == app.user.id: return
 
 
-     if message.content.startswith('_시간'):
-          a = datetime.datetime.today().year
-          b = datetime.datetime.today().month
-          c = datetime.datetime.today().day
-          d = datetime.datetime.today().hour
-          e = datetime.datetime.today().minute
-          await app.send_message(channel, str(a) + '년' + str(b) + '월' + str(c) + '일' + str(d) + '시' + str(e) + '분 입니다.')
+     if message.content.startswith("_로그"):
+        if id in owner:
+            channel = app.get_channel(id=message.content[4:22])
+            embed = discord.Embed(title="로그 전송 안내", description='로그 내용:' + message.content[22:],color=0x19deff)
+            embed.set_footer(text="로그 일부분만 보내 드립니다.")
+            await app.send_message(channel, embed=embed)
+        else:
+            await app.send_message(channel,'관리자 권한이 있어야 합니다!')
+
+	
      if message.content.startswith('응아아오여ㅗㅕㅑㅠㄷ소ㅑ즂'):
         await app.send_message(channel, 'ㅂㅈㅅㅂㅈㅅㅎㄷ') 
      else: 
