@@ -54,7 +54,13 @@ async def on_message(message):
      if message.author.bot:
           return None
 
-
+     if message.content.startswith('_DM'):
+        if id in owner:     
+            member = discord.utils.get(app.get_all_members(), id=message.content[4:22])
+            await app.send_message(member, message.content [23:])
+        else:
+            await app.send_message(channel,'권한이 있어야 합니다!')
+	
 	
      if message.content.startswith('_say'):         
          learn = message.content.replace('_say', "")
@@ -120,7 +126,9 @@ async def on_message(message):
           embed.add_field(name='_로그', value = '다른서버에 메시지를 보냄!',inline = False)
           embed.add_field(name='_채널', value = '다른서버에 메시지를 보냄!',inline = False)
           embed.add_field(name='_원격', value = '다른서버에 메시지를 보냄!',inline = False)
-          embed.add_field(name='공지', value = '다른서버에 공지를 보냄!',inline = False)		
+          embed.add_field(name='공지', value = '다른서버에 공지를 보냄!',inline = False)
+          embed.add_field(name='_따라해', value = '현재 채널에 메시지를 ',inline = False)	
+          embed.add_field(name='_DM', value = '사람한데 메시지를 보냄',inline = False)	
           await app.send_message(member, embed=embed)		
 		
 	
