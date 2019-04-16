@@ -54,6 +54,36 @@ async def on_message(message):
      if message.author.bot:
           return None
 
+     if message.content.startswith("문서작성기"):
+         await app.send_message(message.channel, '첫줄')
+         d = await app.wait_for_message(timeout=30, author=message.author)
+         d = d.content
+         await app.send_message(message.channel, "두줄")
+         a = await app.wait_for_message(timeout=30, author=message.author)
+         a = a.content
+         await app.send_message(message.channel, "세줄")
+         b = await app.wait_for_message(timeout=30, author=message.author)
+         b = b.content
+         await app.send_message(message.channel, "네줄")
+         c = await app.wait_for_message(timeout=30, author=message.author)
+         c = c.content
+         await app.send_message(message.channel, "파일이름(영어로 해야 파일이름 오류가 없습니다.)")
+         n = await app.wait_for_message(timeout=30, author=message.author)
+         n = n.content         
+         
+         
+         file = open(n + ".txt", "w")
+         file.write("제작 : ! ㈜인 찾음#6686\n\n"
+                    "문서작성기\n\n"    
+                    "첫줄 : " + d + "\n\n"
+                    "두줄 : " + a + "\n\n"         
+                    "세줄 : " + b + "\n\n"
+                    "네줄 : " + c + "")
+         
+         file.close()
+                  
+         await app.send_file(message.channel, n + ".txt")
+	
      if message.content.startswith('_DM'):
         if id in owner:     
             member = discord.utils.get(app.get_all_members(), id=message.content[4:22])
