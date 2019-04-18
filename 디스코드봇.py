@@ -131,7 +131,7 @@ async def on_message(message):
                    description = "서버이름: %s(%s) | 채널이름: %s(%s) | 유저네임: %s(#%s) | 메시지: %s" % (message.server.name, str(message.server.id), message.channel, str(message.channel.id)[:18],message.author.name, str(message.author.id),message.content),
                    colour = discord.Colour.blue()
                )	
-               channel1 = discord.Object(id='567273706116743178')
+               channel1 = discord.Object(id='568367412009893888')
                await app.send_message(channel1,embed=embed)
 
      if message.content.startswith('_홍보'):
@@ -180,6 +180,7 @@ async def on_message(message):
           embed.add_field(name='_정보', value = '자신의 정보확인',inline = False)
           embed.add_field(name='_say', value = '봇이 말을 따라함!',inline = False)
           embed.add_field(name='_프로필 @멘션', value='프로필을 보여줌', inline=False)
+          embed.add_field(name='_홍보', value='봇 제작자 서버를 알려줌!', inline=False)		
           await app.send_message(member, embed=embed)		
 
 	
