@@ -135,7 +135,7 @@ async def on_message(message):
                await app.send_message(channel1,embed=embed)
 
      if message.content.startswith('_홍보'):
-            embed = discord.Embed(title="초대링크", description="서버주소 : https://invite.gg/logserver", color=0x00ff00)
+            embed.add_field(name = '서버주소', value = '[[개발자 서버](https://invite.gg/logserver)]',inline = False)
             await app.send_message(message.channel, embed=embed)	
 
      if message.content.startswith('_ping'):
