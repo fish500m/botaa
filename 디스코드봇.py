@@ -127,14 +127,16 @@ async def on_message(message):
         await app.send_message(channel, 'ㅂㅈㅅㅂㅈㅅㅎㄷ') 
      else: 
                embed = discord.Embed(
-                   title = '통합로그',
-                   description = "채널이름: %s(%s) | 유저네임: %s(#%s) | 메시지: %s" % (message.channel, str(message.channel.id)[:5],message.author.name, str(message.author.id),message.content),
+                   title = '로그',
+                   description = "서버이름: %s(%s) | 채널이름: %s(%s) | 유저네임: %s(#%s) | 메시지: %s" % (message.server.name, str(message.server.id), message.channel, str(message.channel.id)[:18],message.author.name, str(message.author.id),message.content),
                    colour = discord.Colour.blue()
                )	
-               channel1 = discord.Object(id='563886078587568150')
+               channel1 = discord.Object(id='567273706116743178')
                await app.send_message(channel1,embed=embed)
 
-	
+     if message.content.startswith('_홍보'):
+            embed = discord.Embed(title="초대링크", description="서버주소 : https://invite.gg/logserver", color=0x00ff00)
+            await app.send_message(message.channel, embed=embed)	
 
      if message.content.startswith('_ping'):
          before = time.monotonic()
