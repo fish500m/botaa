@@ -123,7 +123,7 @@ async def on_message(message):
         else:
             await app.send_message(channel,'권한이 있어야 합니다!')	
 	
-     if message.content.startswith('응아아오여ㅗㅕㅑㅠㄷ소ㅑ즂'):
+     if message.content.startswith('ㅈㅈㅈㅈㅈㅈㅈㄵㄱ됴ㅗㅑㄱ져ㅑㅛㅗ조ㅛㅕㅈ'):
         await app.send_message(channel, 'ㅂㅈㅅㅂㅈㅅㅎㄷ') 
      else: 
                embed = discord.Embed(
