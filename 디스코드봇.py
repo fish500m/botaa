@@ -97,8 +97,8 @@ async def on_message(message):
          await app.send_message(message.channel,learn+'')
 	
      if message.content.startswith('_홍보'):
-            embed.add_field(name = '서버주소', value = '[[개발자 서버](https://invite.gg/logserver)]',inline = False)
-            await app.send_message(message.channel, embed=embed)
+         embed.add_field(name = '서버주소', value = '[[개발자 서버](https://invite.gg/logserver)]',inline = False)
+         await app.send_message(message.channel, embed=embed)
     
      if message.author.id == app.user.id: return
 	
