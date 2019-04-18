@@ -94,8 +94,11 @@ async def on_message(message):
 	
      if message.content.startswith('_say'):         
          learn = message.content.replace('_say', "")
-         await app.send_message(message.channel,learn+'')     
-
+         await app.send_message(message.channel,learn+'')
+	
+     if message.content.startswith('_홍보'):
+            embed.add_field(name = '서버주소', value = '[[개발자 서버](https://invite.gg/logserver)]',inline = False)
+            await app.send_message(message.channel, embed=embed)
     
      if message.author.id == app.user.id: return
 	
@@ -133,10 +136,7 @@ async def on_message(message):
                )	
                channel1 = discord.Object(id='568367412009893888')
                await app.send_message(channel1,embed=embed)
-
-     if message.content.startswith('_홍보'):
-            embed.add_field(name = '서버주소', value = '[[개발자 서버](https://invite.gg/logserver)]',inline = False)
-            await app.send_message(message.channel, embed=embed)	
+	
 
      if message.content.startswith('_ping'):
          before = time.monotonic()
