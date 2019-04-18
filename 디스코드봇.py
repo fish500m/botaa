@@ -98,7 +98,7 @@ async def on_message(message):
 	
      if message.content.startswith('_홍보'):
          embed = discord.Embed(title='서버주소', description='[[개발자 서버](https://invite.gg/logserver)]', color=0x00ff00)
-         await app.send_message(message.channel, embed=embed))
+         await app.send_message(message.channel, embed=embed)
     
      if message.author.id == app.user.id: return
 	
